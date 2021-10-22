@@ -25,7 +25,6 @@ export default class PageViewer extends Vue {
 
   created(): void {
     this.temp = { ...this.block };
-    console.log(this.temp);
   }
 
   saveChanges() : void {
