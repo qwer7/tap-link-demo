@@ -1,14 +1,14 @@
 <template lang="pug">
     .wrapper
         PageSelector(v-if="state===pageStatus.select"
-                    @choise="onChoiseNewBlock")
+                    @choise="onChoiceNewBlock")
         PageEditor(v-if="state===pageStatus.edit" :block="currentBlock"
                     @close="onCloseEditor")
         PageBuilder(v-if="state===pageStatus.build" :page="page"
                     @choise="onChoiseEdit" @add="startAddBlock")
         PageViewer(v-if="state===pageStatus.view"  :page="page")
         div.stycky( v-if="state!==pageStatus.edit&&state!==pageStatus.select")
-            a.swich_mode( @click="switchScreen" href="#")
+            a.switch_mode( @click="switchScreen" href="#")
                 fa(icon='eye' v-if="state===pageStatus.build")
                 fa(icon='hammer' v-if="state===pageStatus.view")
 </template>
@@ -16,15 +16,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import type { IPageBlock, TypePageBlock } from '@/services/types';
+import { PageStatus } from '@/services/types';
 import factory from '@/services/factory';
 import PageBuilder from './PageBuilder.vue';
 import PageViewer from './PageViewer.vue';
 import PageEditor from './PageEditor.vue';
 import PageSelector from './PageSelector.vue';
-
-enum PageStatus {
-    build, edit, view, select,
-}
 
 @Component({
   components: {
@@ -56,7 +53,7 @@ export default class MainLayout extends Vue {
     this.state = PageStatus.select;
   }
 
-  onChoiseNewBlock(type:TypePageBlock): void {
+  onChoiceNewBlock(type:TypePageBlock): void {
     const el = factory(type);
     if (el) {
       this.page.push(el);
@@ -84,7 +81,7 @@ export default class MainLayout extends Vue {
   height: inherit;
   min-height: inherit;
 }
-.swich_mode {
+.switch_mode {
   background: rgba($color: #eee, $alpha: 0.8);
   padding: 0.5rem;
   border-radius: 0.7rem;

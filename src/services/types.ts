@@ -3,6 +3,13 @@ export enum TypePageBlock {
   Image = 'BlockImage',
 }
 
+export enum PageStatus {
+  build,
+  edit,
+  view,
+  select,
+}
+
 export interface IPageBlock {
   readonly type: TypePageBlock;
   data: string;

@@ -1,8 +1,4 @@
 export default {
-  random(): number {
-    return Math.floor(Math.random() * 1000);
-  },
-
   async getImages(count = 3): Promise<string[]> {
     const defaultSrc = 'https://via.placeholder.com/300.png/909/fff';
     let arr = new Array(count).fill(defaultSrc);
