@@ -53,7 +53,7 @@ a {
   #app {
     width: 100vw;
     min-height: 100vh;
-    height: 100%;
+    // height: 100%;
   }
 }
 @media (min-width: 481px) {

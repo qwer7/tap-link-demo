@@ -82,7 +82,7 @@ export default class MainLayout extends Vue {
   justify-content: space-between;
   align-items: stretch;
   height: inherit;
-  //   min-height: calc(100% - 1rem);
+  min-height: inherit;
 }
 .swich_mode {
   background: rgba($color: #eee, $alpha: 0.8);
