@@ -1,6 +1,10 @@
+import Vue from 'vue';
 import { shallowMount } from '@vue/test-utils';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import MainLayout from '../../src/components/MainLayout.vue';
 import { PageStatus, TypePageBlock } from '@/services/types';
+
+Vue.component('fa', FontAwesomeIcon);
 
 describe('MainLayout.vue', () => {
   /* eslint-disable */
