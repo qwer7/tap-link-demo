@@ -12,9 +12,14 @@ export default (type: TypePageBlock): IPageBlock | null => {
   if (type === TypePageBlock.URL) {
     element = {
       type,
-      data: { url: 'https://tap.link/', name: '' },
+      data: { url: 'https://tap.link/', name: '', prefix: 'http://' },
     };
   }
-
+  if (type === TypePageBlock.VK) {
+    element = {
+      type,
+      data: { url: '', name: '', prefix: 'http://vk.me/' },
+    };
+  }
   return element;
 };

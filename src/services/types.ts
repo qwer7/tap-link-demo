@@ -2,6 +2,7 @@ export enum TypePageBlock {
   Text = 'BlockText',
   Image = 'BlockImage',
   URL = 'BlockUrl',
+  VK = 'BlockLinkVk'
 }
 
 export enum PageStatus {
@@ -14,6 +15,7 @@ export enum PageStatus {
 export interface IUrl {
   name?: string;
   url: string;
+  readonly prefix: string;
 }
 
 export interface IPageBlock {
@@ -25,6 +27,7 @@ export const BlocksDescription = [
   { type: TypePageBlock.Text, name: 'Text / Текст', icon: 'font' },
   { type: TypePageBlock.Image, name: 'Image / Картинка', icon: 'image' },
   { type: TypePageBlock.URL, name: 'Link / Ссылка', icon: 'external-link-alt' },
+  { type: TypePageBlock.VK, name: 'VK / Вконтакте', icon: 'comment-dots' },
 ];
 
 export default { TypePageBlock };
