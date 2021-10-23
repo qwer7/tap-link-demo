@@ -21,6 +21,8 @@ import type { IPageBlock } from '@/services/types';
 export default class PageViewer extends Vue {
   @Prop() private block!: IPageBlock;
 
+  @Prop() private first!: IPageBlock;
+
   temp: IPageBlock | null = null;
 
   created(): void {
@@ -29,7 +31,7 @@ export default class PageViewer extends Vue {
 
   saveChanges() : void {
     this.block.data = this.temp?.data || this.block.data;
-    this.$emit('close');
+    this.$emit('save');
   }
 
   discardChanges() : void {

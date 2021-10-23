@@ -2,8 +2,8 @@
     .wrapper
         PageSelector(v-if="state===pageStatus.select"
                     @choise="onChoiceNewBlock")
-        PageEditor(v-if="state===pageStatus.edit" :block="currentBlock"
-                    @close="onCloseEditor")
+        PageEditor(v-if="state===pageStatus.edit" :block="currentBlock" :new="isFirstEdit"
+                    @close="onCloseEditor"  @save="onSaveAndCloseEditor")
         PageBuilder(v-if="state===pageStatus.build" :page="page"
                     @choise="onChoiseEdit" @add="startAddBlock")
         PageViewer(v-if="state===pageStatus.view"  :page="page")
@@ -38,6 +38,8 @@ export default class MainLayout extends Vue {
 
   page: IPageBlock[] = [];
 
+  isFirstEdit = false;
+
   currentBlock: IPageBlock | null = null;
 
   switchScreen() : void {
@@ -45,6 +47,7 @@ export default class MainLayout extends Vue {
   }
 
   onChoiseEdit(block:IPageBlock): void {
+    this.isFirstEdit = false;
     this.currentBlock = block;
     this.state = PageStatus.edit;
   }
@@ -55,14 +58,21 @@ export default class MainLayout extends Vue {
 
   onChoiceNewBlock(type:TypePageBlock): void {
     const el = factory(type);
-    if (el) {
-      this.page.push(el);
-    }
     this.currentBlock = el;
+    this.isFirstEdit = true;
     this.state = PageStatus.edit;
   }
 
+  onSaveAndCloseEditor(): void {
+    const block = this.currentBlock;
+    if (block && !this.page.includes(block)) {
+      this.page.push(block);
+    }
+    this.onCloseEditor();
+  }
+
   onCloseEditor():void {
+    this.isFirstEdit = false;
     this.currentBlock = null;
     this.state = PageStatus.build;
   }

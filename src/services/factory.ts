@@ -18,7 +18,7 @@ export default (type: TypePageBlock): IPageBlock | null => {
   if (type === TypePageBlock.VK) {
     element = {
       type,
-      data: { url: '', name: '', prefix: 'http://vk.me/' },
+      data: { url: 'durov', name: '', prefix: 'http://vk.me/' },
     };
   }
   return element;

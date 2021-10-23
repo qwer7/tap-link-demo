@@ -1,6 +1,6 @@
 <template lang="pug">
     div
-      a(v-if="!edit" :href="link.url" target="_blank")
+      a(v-if="!edit" :href="href" target="_blank")
         fa.icon(icon="external-link-alt")
         span {{urlText}}
       div.form(v-if="edit")
@@ -31,26 +31,5 @@ export default class BlockUrl extends Vue {
 </script>
 
 <style scoped lang="scss">
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  input {
-    border: 1px solid $borderColor;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    width: 80%;
-    margin-bottom: 1rem;
-  }
-}
-a {
-  display: inline-block;
-  padding: 0.5rem;
-  width: 80%;
-  @include hover-link-success;
-}
-.icon {
-  margin-right: 1rem;
-}
+@include block-link-base
 </style>
