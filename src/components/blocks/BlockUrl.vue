@@ -1,6 +1,8 @@
 <template lang="pug">
     div
-      a(v-if="!edit" :href="link.url" target="_blank") {{link.name || link.url}}
+      a(v-if="!edit" :href="link.url" target="_blank")
+        fa.icon(icon="external-link-alt")
+        span {{link.name || link.url}}
       div.form(v-if="edit")
         input( v-model="link.url" placeholder='url')
         input( v-model="link.name" placeholder='label for url')
@@ -43,5 +45,8 @@ a {
   padding: 0.5rem;
   width: 80%;
   @include hover-link-success;
+}
+.icon {
+  margin-right: 1rem;
 }
 </style>
