@@ -9,6 +9,12 @@ export default (type: TypePageBlock): IPageBlock | null => {
       data: 'https://via.placeholder.com/300.png/909/fff',
     };
   }
+  if (type === TypePageBlock.URL) {
+    element = {
+      type,
+      data: { url: 'https://tap.link/', name: '' },
+    };
+  }
 
   return element;
 };

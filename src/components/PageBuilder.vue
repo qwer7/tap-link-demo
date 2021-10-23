@@ -58,13 +58,6 @@ export default class PageBuilder extends Vue {
   display: block;
   width: 50%;
   padding: 1rem 0;
-  border: 2px dashed $borderColor;
-  border-radius: 2rem;
-  &:hover {
-    // background: $successColor;
-    color: $successColor;
-    border: 2px solid $borderColor;
-    transition: all 0.3s ease 0s;
-  }
+  @include hover-link-success;
 }
 </style>
