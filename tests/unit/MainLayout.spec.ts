@@ -36,8 +36,10 @@ describe('MainLayout.vue', () => {
   it('should increase page element after onChoiceNewBlock call', async () => {
     expect(vm.page.length).toBe(0);
     vm.onChoiceNewBlock(TypePageBlock.Text);
+    vm.onSaveAndCloseEditor();
     expect(vm.page.length).toBe(1);
-    vm.onChoiceNewBlock(TypePageBlock.Image);
+    vm.onChoiceNewBlock(TypePageBlock.URL);
+    vm.onSaveAndCloseEditor();
     expect(vm.page.length).toBe(2);
   });
 });
